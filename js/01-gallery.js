@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 
 const gallaryContainerEl = document.querySelector('div.gallery');
-gallaryContainerEl.addEventListener('click', handlerGallaryContainerClick);
+gallaryContainerEl.addEventListener('click', handleGallaryContainerClick);
 
 const gallaryItemsMurkup = createGalleryItemsMurkup(galleryItems);
 gallaryContainerEl.insertAdjacentHTML('beforeend', gallaryItemsMurkup);
@@ -25,7 +25,7 @@ function createGalleryItemsMurkup(items) {
     }).join('');;    
 }
 
-function handlerGallaryContainerClick(e) {
+function handleGallaryContainerClick(e) {
     e.preventDefault();
     
     if (!e.target.classList.contains('gallery__image')) {
@@ -47,9 +47,9 @@ function openImgModal(Src) {
 
     instance.show();
 
-    window.addEventListener('keydown', handlerEscKeyPress);
+    window.addEventListener('keydown', handleEscKeyPress);
 
-    function handlerEscKeyPress(e) { 
+    function handleEscKeyPress(e) { 
         const isEsc = e.code === "Escape";
         if (isEsc) {
             closeImgModal(instance);
@@ -59,7 +59,7 @@ function openImgModal(Src) {
 
 function closeImgModal(modal) {
     modal.close();
-    window.removeEventListener('keydown', handlerEscKeyPress);
+    window.removeEventListener('keydown', handleEscKeyPress);
 }
 
 
