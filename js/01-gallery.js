@@ -53,13 +53,13 @@ function openImgModal(Src) {
         const isEsc = e.code === "Escape";
         if (isEsc) {
             closeImgModal(instance);
+            window.removeEventListener('keydown', handleEscKeyPress);
         }   
     }
 }
 
 function closeImgModal(modal) {
     modal.close();
-    window.removeEventListener('keydown', handleEscKeyPress);
 }
 
 
