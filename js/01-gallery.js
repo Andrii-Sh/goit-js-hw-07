@@ -32,8 +32,34 @@ function handlerGallaryContainerClick(e) {
         return;
     } 
    
-    console.log(e.target.dataset.source);
+    const modalImgSrc = e.target.dataset.source;
+
+    openImgModal(modalImgSrc)   
+   
 }
 
+function openImgModal(Src) {
+    
+
+    const instance = basicLightbox.create(`
+        <img src="${Src}" width="800" height="600">
+    `)
+
+    instance.show();
+
+    window.addEventListener('keydown', handlerEscKeyPress);
+
+    function handlerEscKeyPress(e) { 
+        const isEsc = e.code === "Escape";
+        if (isEsc) {
+            closeImgModal(instance);
+        }   
+    }
+}
+
+function closeImgModal(modal) {
+    modal.close();
+    window.removeEventListener('keydown', handlerEscKeyPress);
+}
 
 
