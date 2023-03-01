@@ -25,7 +25,7 @@ function createGalleryItemsMurkup(items) {
     }).join('');;    
 }
 
-function handleGallaryContainerClick(e) {
+function handleGallaryContainerClick(e) {    
     e.preventDefault();
     
     if (!e.target.classList.contains('gallery__image')) {
@@ -34,13 +34,10 @@ function handleGallaryContainerClick(e) {
    
     const modalImgSrc = e.target.dataset.source;
 
-    openImgModal(modalImgSrc)   
-   
+    openImgModal(modalImgSrc)      
 }
 
 function openImgModal(Src) {
-    
-
     const instance = basicLightbox.create(`
         <img src="${Src}" width="800" height="600">
     `)
