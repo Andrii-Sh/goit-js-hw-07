@@ -34,10 +34,10 @@ function handleGallaryContainerClick(e) {
    
     const modalImgSrc = e.target.dataset.source;
 
-    openImgModal(modalImgSrc)      
+    openModal(modalImgSrc)      
 }
 
-function openImgModal(Src) {
+function openModal(Src) {
     const instance = basicLightbox.create(`
         <img src="${Src}" width="800" height="600">
     `)
@@ -49,13 +49,13 @@ function openImgModal(Src) {
     function handleEscKeyPress(e) { 
         const isEsc = e.code === "Escape";
         if (isEsc) {
-            closeImgModal(instance);
+            closeModal(instance);
             window.removeEventListener('keydown', handleEscKeyPress);
         }   
     }
 }
 
-function closeImgModal(modal) {
+function closeModal(modal) {
     modal.close();
 }
 
