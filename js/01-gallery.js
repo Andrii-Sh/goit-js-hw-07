@@ -37,20 +37,24 @@ function handleGallaryContainerClick(e) {
     openModal(modalImgSrc)      
 }
 
-function openModal(Src) {
+function openModal(src) {
     const instance = basicLightbox.create(`
-        <img src="${Src}" width="800" height="600">
-    `)
+        <img src="${src}" width="800" height="600">
+    `, {
+        onShow: () => {
+            window.addEventListener('keydown', handleEscKeyPress);
+        },
+        onClose: () => {
+            window.removeEventListener('keydown', handleEscKeyPress);
+        }
+    })
 
     instance.show();
-
-    window.addEventListener('keydown', handleEscKeyPress);
 
     function handleEscKeyPress(e) { 
         const isEsc = e.code === "Escape";
         if (isEsc) {
             closeModal(instance);
-            window.removeEventListener('keydown', handleEscKeyPress);
         }   
     }
 }
